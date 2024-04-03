@@ -519,13 +519,9 @@ namespace YarnSpinnerGodot
             // Show the continue button, if we have one.
             if (continueButton != null)
             {
-                if (continueButton is Button button)
+                if (continueButton is BaseButton button)
                 {
                     button.Disabled = false;
-                }
-                else if (continueButton is TextureButton textureButton)
-                {
-                    textureButton.Disabled = false;
                 }
 
                 continueButton.Visible = true;
