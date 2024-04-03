@@ -5,6 +5,7 @@ using Godot;
 
 namespace YarnSpinnerGodot
 {
+    [GlobalClass]
     public partial class OptionsListView : Node, DialogueViewBase
     {
         [Export] PackedScene optionViewPrefab;

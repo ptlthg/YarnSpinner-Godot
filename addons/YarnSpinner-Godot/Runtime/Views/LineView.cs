@@ -11,6 +11,7 @@ namespace YarnSpinnerGodot
     /// A Dialogue View that presents lines of dialogue, using Godot UI Controls
     /// elements.
     /// </summary>
+    [GlobalClass]
     public partial class LineView : Node, DialogueViewBase
     {
         /// <summary>

@@ -3,6 +3,7 @@ using Godot;
 
 namespace YarnSpinnerGodot
 {
+    [GlobalClass]
     public partial class OptionView : Button
     {
         [Export] bool showCharacterName = false;
