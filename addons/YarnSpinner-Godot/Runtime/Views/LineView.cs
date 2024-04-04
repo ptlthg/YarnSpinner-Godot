@@ -366,7 +366,7 @@ namespace YarnSpinnerGodot
                         var errorMessage = "";
                         if (failedTask.Exception != null)
                         {
-                            errorMessage =$"{failedTask.Exception.Message}\n{failedTask.Exception.StackTrace}";
+                            errorMessage = failedTask.Exception.ToString();
                         }
                         GD.PushError($"Error while running {nameof(RunLineInternal)}: {errorMessage}");
                     }, 
