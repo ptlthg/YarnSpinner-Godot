@@ -57,6 +57,7 @@ namespace YarnSpinnerGodot
     /// enforce static typing of declared variables within the Yarn
     /// Program.</para>
     /// </remarks>
+    [GlobalClass]
     public partial class InMemoryVariableStorage
         : VariableStorageBehaviour, IEnumerable<KeyValuePair<string, object>>
     {

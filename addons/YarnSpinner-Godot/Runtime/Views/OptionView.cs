@@ -3,7 +3,7 @@ using Godot;
 
 namespace YarnSpinnerGodot
 {
-    public partial class OptionView : Button
+    public partial class OptionView : BaseButton
     {
         [Export] bool showCharacterName = false;
         [Export] private RichTextLabel label;

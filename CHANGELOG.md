@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.2.3] 2024-04-03
+* Make LineView compatible with any subclass of BaseButton used as your continueButton. #40 by @fmoo 
+* Add GlobalClass attribute to InMemoryVariableStorage, TexTLineProvider, LineView, OptionsListView. #41 by @fmoo 
+* Improve error logging in LineView #42 by @fmoo
+
 ## [0.2.2] 2024-03-04
 * Fixed an error with Tools menu items for YarnSpinner not working after rebuilding C# code.
 

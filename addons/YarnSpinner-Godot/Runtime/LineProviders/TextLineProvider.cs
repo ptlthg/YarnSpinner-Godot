@@ -3,6 +3,7 @@ using Godot;
 
 namespace YarnSpinnerGodot
 {
+    [GlobalClass]
     public partial class TextLineProvider : LineProviderBehaviour
     {
         /// <summary>Specifies the language code to use for text content
