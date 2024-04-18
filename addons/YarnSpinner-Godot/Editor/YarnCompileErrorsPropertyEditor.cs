@@ -1,3 +1,4 @@
+#nullable disable
 #if TOOLS
 using Godot;
 using Array = Godot.Collections.Array;

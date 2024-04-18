@@ -25,6 +25,7 @@ DEALINGS IN THE SOFTWARE.
 */
 
 
+#nullable disable
 
 using Yarn;
 namespace YarnSpinnerGodot

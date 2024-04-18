@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.2.4] 2024-04-17
+* fix #46 - The Create Yarn Project menu item was not working in 4.1.2
+* fix #45 - Add `#nullable disable` to the plugin's C# source files for compatibility with projects with nullable enabled
+* fix #35 - Don't have the example OptionView expand vertically
+
 ## [0.2.3] 2024-04-03
 * Make LineView compatible with any subclass of BaseButton used as your continueButton. #40 by @fmoo 
 * Add GlobalClass attribute to InMemoryVariableStorage, TexTLineProvider, LineView, OptionsListView. #41 by @fmoo 

@@ -2,14 +2,15 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
+    <WarningsAsErrors>true</WarningsAsErrors>
+    <!--Turn on Nullable so that we can fail the build if there are any incompatible scripts-->
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-  
   <ItemGroup>
     <!-- Add some extra files for ease of developing samples -->
-    <None Include="addons\YarnSpinner-Godot\YarnSpinner-Godot.props"/>
-    <None Include="addons\YarnSpinner-Godot\plugin.cfg"/>
-    <None Include="**\*.md"/>
+    <None Include="addons\YarnSpinner-Godot\YarnSpinner-Godot.props" />
+    <None Include="addons\YarnSpinner-Godot\plugin.cfg" />
+    <None Include="**\*.md" />
   </ItemGroup>
-  
   <Import Project="addons\YarnSpinner-Godot\YarnSpinner-Godot.props" />
 </Project>

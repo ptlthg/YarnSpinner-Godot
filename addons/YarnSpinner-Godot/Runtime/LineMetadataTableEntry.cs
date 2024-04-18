@@ -1,3 +1,4 @@
+#nullable disable
 using System;
 using CsvHelper;
 using System.Collections.Generic;

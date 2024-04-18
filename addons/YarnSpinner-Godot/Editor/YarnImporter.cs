@@ -1,3 +1,4 @@
+#nullable disable
 #if TOOLS
 using System.Security.Cryptography;
 using System.Text;
