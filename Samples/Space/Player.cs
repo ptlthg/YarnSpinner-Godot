@@ -1,3 +1,4 @@
+#nullable disable
 using Godot;
 using Godot.Collections;
 using YarnSpinnerGodot;

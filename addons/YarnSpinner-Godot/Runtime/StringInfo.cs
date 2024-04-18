@@ -1,3 +1,4 @@
+#nullable disable
 using Godot;
 public partial class StringInfo : Resource
 {

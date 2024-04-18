@@ -1,4 +1,5 @@
 #if TOOLS
+#nullable disable 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -229,7 +230,7 @@ namespace YarnSpinnerGodot
             dialog.PopupCentered(new Vector2I(700, 500));
         }
 
-        private static void CreateYarnProjectDestinationSelected(string destination)
+        private void CreateYarnProjectDestinationSelected(string destination)
         {
             GD.Print("Creating a yarn project at " + destination);
             YarnEditorUtility.CreateYarnProject(destination);

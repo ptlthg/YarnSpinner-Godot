@@ -24,6 +24,7 @@ DEALINGS IN THE SOFTWARE.
 
 */
 
+#nullable disable
 
 using System;
 using Godot;

@@ -1,3 +1,4 @@
+#nullable disable
 using Godot;
 using YarnSpinnerGodot;
 public partial class SpaceSample : Node
