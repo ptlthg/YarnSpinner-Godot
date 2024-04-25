@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk/4.2.1">
+<Project Sdk="Godot.NET.Sdk/4.2.2">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
@@ -11,6 +11,10 @@
     <None Include="addons\YarnSpinner-Godot\YarnSpinner-Godot.props" />
     <None Include="addons\YarnSpinner-Godot\plugin.cfg" />
     <None Include="**\*.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- For SQL variable storage sample -->
+    <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
   </ItemGroup>
   <Import Project="addons\YarnSpinner-Godot\YarnSpinner-Godot.props" />
 </Project>
