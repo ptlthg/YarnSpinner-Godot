@@ -11,6 +11,11 @@
     <None Include="addons\YarnSpinner-Godot\YarnSpinner-Godot.props" />
     <None Include="addons\YarnSpinner-Godot\plugin.cfg" />
     <None Include="**\*.md" />
+    <None Include="**\*.yarn" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- For SQL variable storage sample -->
+    <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
   </ItemGroup>
   <Import Project="addons\YarnSpinner-Godot\YarnSpinner-Godot.props" />
 </Project>

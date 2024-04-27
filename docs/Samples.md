@@ -66,6 +66,12 @@ You can create your own MarkupPalette with Project -> Tools -> YarnSpinner -> Cr
 
 https://github.com/YarnSpinnerTool/YarnSpinner-Godot/assets/9920963/cb7573ff-8cf2-4de9-b85c-99647a6c5cf0
 
+# SQLite Variable Storage
+
+This example shows how to write a custom variable storage class. In this case, variables are read and written to a SQLite 
+database file on the player's machine. This sample uses the `sqlite-net-pcl` package as a dependency.
+
+
 ## ASSET CREDITS
 
 The assets included in this example project are:
