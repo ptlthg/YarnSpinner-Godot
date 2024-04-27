@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk/4.2.2">
+<Project Sdk="Godot.NET.Sdk/4.2.1">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
@@ -11,6 +11,7 @@
     <None Include="addons\YarnSpinner-Godot\YarnSpinner-Godot.props" />
     <None Include="addons\YarnSpinner-Godot\plugin.cfg" />
     <None Include="**\*.md" />
+    <None Include="**\*.yarn" />
   </ItemGroup>
   <ItemGroup>
     <!-- For SQL variable storage sample -->

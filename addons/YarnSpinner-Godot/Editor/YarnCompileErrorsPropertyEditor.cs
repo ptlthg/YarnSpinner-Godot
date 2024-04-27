@@ -56,7 +56,7 @@ namespace YarnSpinnerGodot.Editor
             else
             {
                 _propertyControl.Text =
-                    $"{_currentValue.Count} error{(_currentValue.Count > 1 ? "s" : "")}";
+                    $"❌{_currentValue.Count} error{(_currentValue.Count > 1 ? "s" : "")}";
             }
         }
 

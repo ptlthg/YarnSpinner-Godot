@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/YarnSpinner-Godot/Runtime/Views/OptionView.cs" id="1"]
 
 [node name="OptionView" type="Button" node_paths=PackedStringArray("label")]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 26)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

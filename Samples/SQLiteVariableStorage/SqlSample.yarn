@@ -3,11 +3,11 @@ tags:
 ---
 <<declare $characterName = "" as string>>
 <<declare $numVariables = 0>>
-<<declare $impressed = false>>
+<<declare $impressed = false as bool>>
 Guide: Alright, I've been waiting for my last applicant of the day.  
 Guide: Hmm, how do you say your name!? It says "S-Q-L".
 -> Eskew-well 
-  <<set $characterName to "Eskewell">>
+  <<set $characterName to "Eskew-well">>
 -> Seekwill
   <<set $characterName to "Seekwill">>
 {$characterName}: My name is {$characterName}.
@@ -15,20 +15,22 @@ Guide: Hmm, how do you say your name!? It says "S-Q-L".
 Guide: Wow. Impressive! Just how many variables do you think you could store?? 
 -> There's no limit.
    <<set $numVariables to -1>>
+   Guide: Wh- what? Unlimited?? 
+   Guide: Gahhh!!! 
+   The guide ran away. 
+   <<stop>>
+-> Sixty two thousand. 
+   <<set $numVariables to 62000>>
+   Guide: Formidable... imagine the heights you could reach under our guidance.
+   <<set $impressed to true>>
 -> One thousand. 
    <<set $numVariables to 1000>>
+   Guide: Hmm. That's not bad. 
+   <<set $impressed to true>>
 -> Three. 
    <<set $numVariables to 3>>
-<<if $numVariables ==-1>>
-Guide: Wh- what? Unlimited?? 
-Guide: Gahhh!!! 
-The guide ran away. 
-<<elseif $numVariables == 1000>>
-Guide: Hmm. That's not bad. 
-<<set $impressed to true>>
-<<else>>
-Guide: I ...see. Where you come from, is that impressive?
-<<endif>>
+   Guide: I ...see.
+   <<set $impressed to false>>
 
 Guide: Alright then, {$characterName}. You can store {$numVariables} variables... 
 <<if $impressed>>

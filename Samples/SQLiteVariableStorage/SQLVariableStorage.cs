@@ -7,6 +7,9 @@ using Godot;
 using SQLite;
 using YarnSpinnerGodot;
 
+/// <summary>
+/// SQLite based custom variable storage example.
+/// </summary>
 public partial class SQLVariableStorage : VariableStorageBehaviour
 {
     private SQLiteConnection db; // the database connector
@@ -28,7 +31,31 @@ public partial class SQLVariableStorage : VariableStorageBehaviour
     {
         string query = "";
         List<object> results = new();
-        // try to get a value from the given table, as a generic object
+        if (typeof(T) == typeof(IConvertible))
+        {
+            // we don't know the expected type
+            if (TryGetValue<string>(variableName, out string stringResult))
+            {
+                result = (T) (object) stringResult;
+                return true;
+            }
+
+            if (TryGetValue<float>(variableName, out float floatResult))
+            {
+                result = (T) (object) floatResult;
+                return true;
+            }
+
+            if (TryGetValue<bool>(variableName, out bool boolResult))
+            {
+                result = (T) (object) boolResult;
+                return true;
+            }
+
+            result = default(T);
+            return false;
+        }
+
         if (typeof(T) == typeof(string))
         {
             query = "SELECT * FROM YarnString WHERE key = ?";
@@ -50,19 +77,21 @@ public partial class SQLVariableStorage : VariableStorageBehaviour
         {
             if (results[0] is YarnFloat f)
             {
-                result = (T)(object)f.value;
+                result = (T) (object) f.value;
             }
             else if (results[0] is YarnBool b)
             {
-                result = (T)(object)b.value;
-            }  else if (results[0] is YarnString s)      
-            {                                       
-                result = (T)(object)s.value;        
+                result = (T) (object) b.value;
+            }
+            else if (results[0] is YarnString s)
+            {
+                result = (T) (object) s.value;
             }
             else
             {
                 throw new ArgumentException($"Unknown variable type {typeof(T)}");
-            }                                  
+            }
+
             return true;
         }
 
@@ -98,9 +127,9 @@ public partial class SQLVariableStorage : VariableStorageBehaviour
             throw new ArgumentException($"{variableName} is a string.");
         }
 
-        if (Exists(variableName, typeof(float)))
+        if (Exists(variableName, typeof(bool)))
         {
-            throw new ArgumentException($"{variableName} is a float.");
+            throw new ArgumentException($"{variableName} is a bool.");
         }
 
         // if not, insert or update row in this table to the given value
@@ -191,18 +220,16 @@ public partial class SQLVariableStorage : VariableStorageBehaviour
         }
         else if (type == typeof(bool))
         {
-            string boolResult;
-            if (TryGetValue(variableName, out boolResult))
+            if (TryGetValue(variableName, out bool _))
             {
-                return (boolResult != null);
+                return true;
             }
         }
         else if (type == typeof(float))
         {
-            string floatResult;
-            if (TryGetValue(variableName, out floatResult))
+            if (TryGetValue(variableName, out float _))
             {
-                return (floatResult != null);
+                return true;
             }
         }
 
