@@ -2,9 +2,11 @@
 #if TOOLS
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Godot;
 using Microsoft.Extensions.FileSystemGlobbing;
+using Yarn;
 using Yarn.Compiler;
 using YarnSpinnerGodot.Editor.UI;
 
@@ -14,7 +16,6 @@ namespace YarnSpinnerGodot.Editor
     [Tool]
     public partial class YarnProjectInspectorPlugin : EditorInspectorPlugin
     {
-
         private YarnCompileErrorsPropertyEditor _compileErrorsPropertyEditor;
         private ScrollContainer _parseErrorControl;
         private YarnProject _project;
@@ -51,7 +52,7 @@ namespace YarnSpinnerGodot.Editor
             {
                 return false;
             }
-            
+
             if (IsTresYarnProject(project))
             {
                 return true;
@@ -73,7 +74,6 @@ namespace YarnSpinnerGodot.Editor
                     // can't use nameof for private fields here
                     "_baseLocalizationJSON",
                     "_lineMetadataJSON",
-                    "_serializedDeclarationsJSON",
                     "_listOfFunctionsJSON",
                 };
                 if (hideProperties.Contains(path))
@@ -113,6 +113,79 @@ namespace YarnSpinnerGodot.Editor
                         Callable.From(RenderCompilationErrors));
                     RenderCompilationErrors();
                     AddCustomControl(_parseErrorControl);
+                    return true;
+                }
+
+                if (path == "_serializedDeclarationsJSON")
+                {
+                    var header = new HBoxContainer();
+                    header.AddChild(new Label
+                    {
+                        Text = " Story Variables",
+                        SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+                        SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+                    });
+                    header.AddChild(new Label
+                    {
+                        Text = _project.SerializedDeclarations == null || _project.SerializedDeclarations.Length == 0
+                            ? "None"
+                            : _project.SerializedDeclarations.Length.ToString(CultureInfo.InvariantCulture),
+                        SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+                        SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+                    });
+                    AddCustomControl(header);
+                    if (_project.SerializedDeclarations is {Length: >= 1})
+                    {
+                        var scrollContainer = new ScrollContainer
+                        {
+                            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+                            SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+                        };
+
+                        var vbox = new VBoxContainer
+                        {
+                            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+                            SizeFlagsVertical = Control.SizeFlags.ShrinkBegin,
+                        };
+                        scrollContainer.AddChild(vbox);
+                        foreach (var declaration in _project.SerializedDeclarations)
+                        {
+                            var labelText = $"{declaration.name} ({declaration.typeName})\n";
+                            if (declaration.isImplicit)
+                            {
+                                labelText += "Implicitly declared.";
+                            }
+                            else
+                            {
+                                labelText += $"Declared in {declaration.sourceYarnAssetPath}\n";
+                            }
+
+                            var typeName = declaration.typeName;
+                            var defaultValue = "";
+                            if (typeName == BuiltinTypes.String.Name)
+                            {
+                                defaultValue = declaration.defaultValueString;
+                            }
+                            else if (typeName == BuiltinTypes.Boolean.Name)
+                            {
+                                defaultValue = declaration.defaultValueBool.ToString();
+                            }
+                            else if (typeName == BuiltinTypes.Number.Name)
+                            {
+                                defaultValue = declaration.defaultValueNumber.ToString(CultureInfo.InvariantCulture);
+                            }
+
+                            labelText += $"Default value: {defaultValue}\n";
+                            var label = _fileNameLabelScene.Instantiate<Label>();
+                            label.Text = labelText;
+                            vbox.AddChild(label);
+                        }
+
+                        scrollContainer.CustomMinimumSize =
+                            new Vector2(0, 150);
+                        AddCustomControl(scrollContainer);
+                    }
+
                     return true;
                 }
 
@@ -424,10 +497,9 @@ namespace YarnSpinnerGodot.Editor
             catch (Exception e)
             {
                 GD.PushError(
-                    $"Error in {nameof(YarnProjectInspectorPlugin)}: {e.Message}\n{e.StackTrace}");
+                    $"Error in {nameof(YarnProjectInspectorPlugin)}.{nameof(_ParseBegin)}(): {e.Message}\n{e.StackTrace}");
             }
         }
-
 
         private void OnBaseLocaleChanged()
         {

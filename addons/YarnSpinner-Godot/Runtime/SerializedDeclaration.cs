@@ -20,7 +20,7 @@ namespace YarnSpinnerGodot
             BuiltinTypes.Number
         };
 
-        public string name = "$variable";
+        public string name;
 
         public string typeName = BuiltinTypes.String.Name;
 
