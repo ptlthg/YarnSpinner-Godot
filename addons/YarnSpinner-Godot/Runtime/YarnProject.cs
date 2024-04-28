@@ -239,7 +239,7 @@ namespace YarnSpinnerGodot
                     try
                     {
                         _serializedDeclarations =
-                            JsonSerializer.Deserialize<SerializedDeclaration[]>(_serializedDeclarationsJSON);
+                            JsonSerializer.Deserialize<SerializedDeclaration[]>(_serializedDeclarationsJSON, YarnProject.JSONOptions);
                     }
                     catch (Exception e)
                     {

@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.2.5] 2024-04-28
+* fix #50 - errors calling Stop if the runner was running a command like wait
+* fix #44 - show variable declarations in the yarn project inspector
+* Add SQL Variable storage Sample (not delivered in the addons/ directory, open this repository as a Godot project to try this sample)
+
 ## [0.2.4] 2024-04-17
 * fix #46 - The Create Yarn Project menu item was not working in 4.1.2
 * fix #45 - Add `#nullable disable` to the plugin's C# source files for compatibility with projects with nullable enabled

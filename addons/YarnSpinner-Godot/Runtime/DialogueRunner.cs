@@ -23,6 +23,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 */
+
 #nullable disable
 
 using System.Collections.Generic;
@@ -774,7 +775,7 @@ namespace YarnSpinnerGodot
                 // Load this new Yarn Project.
                 SetProject(yarnProject);
             }
-            
+
             if (lineProvider == null)
             {
                 // If we don't have a line provider, create a
@@ -1371,9 +1372,14 @@ namespace YarnSpinnerGodot
             }
         }
 
-        void ContinueDialogue()
+        private void ContinueDialogue()
         {
             CurrentLine = null;
+            if (!IsDialogueRunning)
+            {
+                return;
+            }
+
             Dialogue.Continue();
         }
 
