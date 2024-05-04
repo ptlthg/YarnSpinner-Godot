@@ -103,7 +103,7 @@ namespace YarnSpinnerGodot
                 // The first available option is selected by default
                 if (optionViewsCreated == 0)
                 {
-                    optionView.GrabFocus();
+                    optionView.CallDeferred(Control.MethodName.GrabFocus);
                 }
 
                 optionViewsCreated += 1;

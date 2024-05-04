@@ -55,6 +55,7 @@ namespace YarnSpinnerGodot
         public override void _Ready()
         {
             Connect(BaseButton.SignalName.Pressed, Callable.From(InvokeOptionSelected));
+            FocusMode = FocusModeEnum.All;
         }
 
         /// <summary>
